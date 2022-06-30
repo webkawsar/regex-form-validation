@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regular Expression Form Validation</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <main>
+      <div class="container p-4 shadow mb-5 bg-body rounded">
+        <div class="head">
+          <h1 class="text-center">Regex Form Validation</h1>
+          <hr />
+        </div>
+
+        <div class="form-section">
+          <form>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="firstName" class="form-label">First name</label>
+                <input
+                  type="text"
+                  class="form-control is-invalid"
+                  id="firstName"
+                />
+                <div class="invalid-feedback">
+                  Use only letter and must be more than 5 character
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="lastName" class="form-label">Last name</label>
+                <input
+                  type="text"
+                  class="form-control is-invalid"
+                  id="lastName"
+                />
+                <div class="invalid-feedback">
+                  Use only letter and must be more than 5 character
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="email" class="form-label">Email address</label>
+                <input
+                  type="email"
+                  class="form-control is-invalid"
+                  id="email"
+                />
+                <div class="invalid-feedback">
+                  Please provide a valid email address
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="phoneNumber" class="form-label">Phone number</label>
+                <input
+                  type="number"
+                  class="form-control is-invalid"
+                  id="phoneNumber"
+                />
+                <div class="invalid-feedback">Write BD Phone number</div>
+              </div>
+
+              <div class="col-md-12">
+                <label for="websiteUrl" class="form-label">Website url</label>
+                <input
+                  type="text"
+                  class="form-control is-invalid"
+                  id="websiteUrl"
+                />
+                <div class="invalid-feedback">
+                  Write correct website address
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="city" class="form-label">City</label>
+                <input type="text" class="form-control is-invalid" id="city" />
+                <div class="invalid-feedback">City name is required</div>
+              </div>
+              <div class="col-md-6">
+                <label for="zip" class="form-label">Zip</label>
+                <input type="text" class="form-control is-invalid" id="zip" />
+                <div class="invalid-feedback">Zip name is required</div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+    integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+    crossorigin="anonymous"
+  ></script>
+  <script src="script.js"></script>
+</html>
