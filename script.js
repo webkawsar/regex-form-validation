@@ -17,6 +17,7 @@ const UI = {
         // validation 
         const firstNameFeedBackElm = document.querySelector('#firstNameFeedBack');
         const lastNameFeedBackElm = document.querySelector('#lastNameFeedBack');
+        const emailFeedBackElm = document.querySelector('#emailFeedBack');
 
         return {
             formElm,
@@ -28,7 +29,8 @@ const UI = {
             cityElm,
             zipElm,
             firstNameFeedBackElm,
-            lastNameFeedBackElm
+            lastNameFeedBackElm,
+            emailFeedBackElm
         }
     },
     showMessage(msg) {
@@ -40,7 +42,8 @@ const UI = {
         this.hideMessage();
     },
     validateInputs({firstName, lastName, email, phoneNumber, websiteUrl, city, zip}) {
-       const {firstNameElm, firstNameFeedBackElm, lastNameElm, lastNameFeedBackElm} =  this.loadSelectors();
+
+       const {firstNameElm, firstNameFeedBackElm, lastNameElm, emailElm, lastNameFeedBackElm, emailFeedBackElm} =  this.loadSelectors();
 
 
         // username
@@ -99,15 +102,24 @@ const UI = {
 
 
         // Email validation
-        // web.kawsarahmed@gmail.com
-        const emailRegex = /^[a-z0-9]@[a-z]\.[a-z]{3}$/i;
+        const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i;
         if(emailRegex.test(email)) {
             
-            console.log('valid email');
+
+            // at first remove invalid class then add valid class
+            emailElm.classList.remove('is-invalid');
+            emailElm.classList.add('is-valid');
+            emailFeedBackElm.className = 'valid-feedback';
+            emailFeedBackElm.textContent = 'Looks good!';
+    
 
         } else {
 
-            console.log('invalid email');
+            // at first remove valid class then add invalid class
+            emailElm.classList.remove('is-valid');
+            emailElm.classList.add('is-invalid');
+            emailFeedBackElm.className = 'invalid-feedback';
+            emailFeedBackElm.textContent = 'Please provide valid email address';
         }
 
         
