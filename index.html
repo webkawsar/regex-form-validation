@@ -25,26 +25,14 @@
             <div class="row g-3">
               <div class="col-md-6">
                 <label for="firstName" class="form-label">First name</label>
-                <input
-                  type="text"
-                  class="form-control is-invalid"
-                  id="firstName"
-                />
-                <div class="invalid-feedback">
-                  Use only letter and must be more than 5 character
-                </div>
+                <input type="text" class="form-control" id="firstName" />
+                <div id="firstNameFeedBack"></div>
               </div>
 
               <div class="col-md-6">
                 <label for="lastName" class="form-label">Last name</label>
-                <input
-                  type="text"
-                  class="form-control is-invalid"
-                  id="lastName"
-                />
-                <div class="invalid-feedback">
-                  Use only letter and must be more than 5 character
-                </div>
+                <input type="text" class="form-control" id="lastName" />
+                <div id="lastNameFeedBack"></div>
               </div>
 
               <div class="col-md-6">
@@ -92,6 +80,8 @@
                 <div class="invalid-feedback">Zip name is required</div>
               </div>
             </div>
+
+            <button style="display: none"></button>
           </form>
         </div>
       </div>
