@@ -266,6 +266,18 @@ const UI = {
         this.hideMessage();
 
     },
+    resetInputs() {
+        const {firstNameElm, lastNameElm, emailElm, phoneNumberElm, websiteUrlElm, cityElm, zipElm} = this.loadSelectors();
+
+        firstNameElm.value = '';
+        lastNameElm.value = '';
+        emailElm.value = '';
+        phoneNumberElm.value = '';
+        websiteUrlElm.value = '';
+        cityElm.value = '';
+        zipElm.value = '';
+
+    },
     init(){
 
         const {formElm} = this.loadSelectors();
@@ -282,8 +294,8 @@ const UI = {
             // submit and show success message
             this.showSubmitMsg();
 
-            // reset input
-            
+            // reset inputs
+            this.resetInputs();
 
         })
     }
