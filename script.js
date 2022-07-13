@@ -53,6 +53,20 @@ const UI = {
         messageElm.insertAdjacentHTML("afterbegin", elm);
         this.hideMessage();
     },
+    toggleValidateClass(isValid, inputElm, feedbackElm, feedback) {
+
+        if(isValid) {
+            inputElm.classList.remove('is-invalid');
+            inputElm.classList.add('is-valid');
+            feedbackElm.className = 'valid-feedback';
+            feedbackElm.textContent = 'Looks good!';
+        } else {
+            inputElm.classList.remove('is-valid');
+            inputElm.classList.add('is-invalid');
+            feedbackElm.className = 'invalid-feedback';
+            feedbackElm.textContent = feedback;
+        }
+    },
     validateInputs({firstName, lastName, email, phoneNumber, websiteUrl, city, zip}) {
 
        const {firstNameElm, lastNameElm, emailElm, phoneNumberElm, websiteUrlElm, cityElm, zipElm, firstNameFeedBackElm, lastNameFeedBackElm, emailFeedBackElm, phoneNumberFeedBackElm, websiteUrlFeedBackElm, cityFeedBackElm, zipFeedBackElm} =  this.loadSelectors();
@@ -71,47 +85,20 @@ const UI = {
         const nameRegex = /^[a-z](.+){3}[a-z]$/i;        
         if(nameRegex.test(firstName)) {
 
-            fNameIsValid =  true;
-            // at first remove invalid class then add valid class
-            firstNameElm.classList.remove('is-invalid');
-            firstNameElm.classList.add('is-valid');
-            firstNameFeedBackElm.className = 'valid-feedback';
-            firstNameFeedBackElm.textContent = 'Looks good!';
-
+            fNameIsValid = true;
+            this.toggleValidateClass(true, firstNameElm, firstNameFeedBackElm, 'valid-feedback');
         } else {
-
-            // at first remove valid class then add invalid class
-            firstNameElm.classList.remove('is-valid');
-            firstNameElm.classList.add('is-invalid');
-            firstNameFeedBackElm.className = 'invalid-feedback';
-            firstNameFeedBackElm.textContent = 'Use only letter and must be more than 5 character';
-
+            this.toggleValidateClass(false, firstNameElm, firstNameFeedBackElm, 'Use only letter and must be more than 5 character');
         }
 
-
-        
         let lNameIsValid = false;
         if(nameRegex.test(lastName)) {
             
             lNameIsValid = true;
-            // at first remove invalid class then add valid class
-            lastNameElm.classList.remove('is-invalid');
-            lastNameElm.classList.add('is-valid');
-            lastNameFeedBackElm.className = 'valid-feedback';
-            lastNameFeedBackElm.textContent = 'Looks good!';
+            this.toggleValidateClass(true, lastNameElm, lastNameFeedBackElm, 'valid-feedback');
         } else {
-
-
-            // at first remove valid class then add invalid class
-            lastNameElm.classList.remove('is-valid');
-            lastNameElm.classList.add('is-invalid');
-            lastNameFeedBackElm.className = 'invalid-feedback';
-            lastNameFeedBackElm.textContent = 'Use only letter and must be more than 5 character';
-
+            this.toggleValidateClass(false, lastNameElm, lastNameFeedBackElm, 'Use only letter and must be more than 5 character');
         }
-
-
-
 
         // Email validation
         let emailIsValid = false;
@@ -119,22 +106,12 @@ const UI = {
         if(emailRegex.test(email)) {
             
             emailIsValid = true;
-            // at first remove invalid class then add valid class
-            emailElm.classList.remove('is-invalid');
-            emailElm.classList.add('is-valid');
-            emailFeedBackElm.className = 'valid-feedback';
-            emailFeedBackElm.textContent = 'Looks good!';
-    
+            this.toggleValidateClass(true, emailElm, emailFeedBackElm, 'valid-feedback');
 
         } else {
 
-            // at first remove valid class then add invalid class
-            emailElm.classList.remove('is-valid');
-            emailElm.classList.add('is-invalid');
-            emailFeedBackElm.className = 'invalid-feedback';
-            emailFeedBackElm.textContent = 'Please provide valid email address';
+            this.toggleValidateClass(false, emailElm, emailFeedBackElm, 'Please provide valid email address');
         }
-
 
         // phone number validation
         const phoneRegex = /(\+88)?01[56789]\d{8}/i;
@@ -142,21 +119,12 @@ const UI = {
         if(phoneRegex.test(phoneNumber) && phoneNumber.length === 11 || phoneNumber.length === 13) {
 
             phoneNumberIsValid = true;
-            // at first remove invalid class then add valid class
-            phoneNumberElm.classList.remove('is-invalid');
-            phoneNumberElm.classList.add('is-valid');
-            phoneNumberFeedBackElm.className = 'valid-feedback';
-            phoneNumberFeedBackElm.textContent = 'Looks good!';
+            this.toggleValidateClass(true, phoneNumberElm, phoneNumberFeedBackElm, 'valid-feedback');
 
         } else {
 
-            // at first remove valid class then add invalid class
-            phoneNumberElm.classList.remove('is-valid');
-            phoneNumberElm.classList.add('is-invalid');
-            phoneNumberFeedBackElm.className = 'invalid-feedback';
-            phoneNumberFeedBackElm.textContent = 'Please provide valid BD phone number';
+            this.toggleValidateClass(false, phoneNumberElm, phoneNumberFeedBackElm, 'Please provide valid BD phone number');
         }
-
 
         // website url validation
         const websiteRegex = /(http:\/\/|https:\/\/)?(www\.)?[a-z]+\.[a-z]{2,4}(\.[a-z]{2,4})?/i;
@@ -164,18 +132,10 @@ const UI = {
         if(websiteRegex.test(websiteUrl)) {
 
             websiteIsValid = true;
-            // at first remove invalid class then add valid class
-            websiteUrlElm.classList.remove('is-invalid');
-            websiteUrlElm.classList.add('is-valid');
-            websiteUrlFeedBackElm.className = 'valid-feedback';
-            websiteUrlFeedBackElm.textContent = 'Looks good!';
+            this.toggleValidateClass(true, websiteUrlElm, websiteUrlFeedBackElm, 'valid-feedback');
         } else {
 
-             // at first remove valid class then add invalid class
-             websiteUrlElm.classList.remove('is-valid');
-             websiteUrlElm.classList.add('is-invalid');
-             websiteUrlFeedBackElm.className = 'invalid-feedback';
-             websiteUrlFeedBackElm.textContent = 'Write correct website url';
+            this.toggleValidateClass(false, websiteUrlElm, websiteUrlFeedBackElm, 'Write correct website url');
         }
 
         // city validation
@@ -184,23 +144,11 @@ const UI = {
         if(cityRegex.test(city)) {
 
             cityIsValid = true;
-            
-            // at first remove invalid class then add valid class
-            cityElm.classList.remove('is-invalid');
-            cityElm.classList.add('is-valid');
-            cityFeedBackElm.className = 'valid-feedback';
-            cityFeedBackElm.textContent = 'Looks good!';
+            this.toggleValidateClass(true, cityElm, cityFeedBackElm, 'valid-feedback');
         } else {
 
-
-            // at first remove valid class then add invalid class
-            cityElm.classList.remove('is-valid');
-            cityElm.classList.add('is-invalid');
-            cityFeedBackElm.className = 'invalid-feedback';
-            cityFeedBackElm.textContent = 'City name is required!';
-
+            this.toggleValidateClass(false, cityElm, cityFeedBackElm, 'City name is required!');
         }
-
 
         // zip validation
         const zipRegex = /^\d{1,10}$/i;
@@ -208,20 +156,11 @@ const UI = {
         if(zipRegex.test(zip)) {
 
             zipCodeIsValid = true;
-
-            // at first remove invalid class then add valid class
-            zipElm.classList.remove('is-invalid');
-            zipElm.classList.add('is-valid');
-            zipFeedBackElm.className = 'valid-feedback';
-            zipFeedBackElm.textContent = 'Looks good!';
+            this.toggleValidateClass(true, zipElm, zipFeedBackElm, 'valid-feedback');
 
         } else {
 
-            // at first remove valid class then add invalid class
-            zipElm.classList.remove('is-valid');
-            zipElm.classList.add('is-invalid');
-            zipFeedBackElm.className = 'invalid-feedback';
-            zipFeedBackElm.textContent = 'Valid zip code is required!';
+            this.toggleValidateClass(false, zipElm, zipFeedBackElm, 'Valid zip code is required!');
         }
 
 
